@@ -1,4 +1,13 @@
-ews
+Exemplar Word Spotting
 ===
 
-Efficient Exemplar Word Spotting
+Introduction
+
+Installation
+
+Usage
+
+Credits
+
+References
+
