@@ -1,3 +1,0 @@
-function visualize_box(image, box)
-imshow(image(box(3):box(4),box(1):box(2),:));
-end
