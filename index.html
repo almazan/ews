@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Exemplar Word Spotting : An efficient word spotting library" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Exemplar Word Spotting</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/almazan/ews">View on GitHub</a>
+
+          <h1 id="project_title">Exemplar Word Spotting</h1>
+          <h2 id="project_tagline">An efficient word spotting library</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/almazan/ews/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/almazan/ews/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Abstract</h3>
+
+<p>In this paper we propose an unsupervised segmentation-free method for word spotting in document images. Documents are represented with a grid of HOG descriptors, and a sliding window approach is used to locate the document regions that are most similar to the query. We use the exemplar SVM framework to produce a better representation of the query in an unsupervised way. Finally, the document descriptors are precomputed and compressed with Product Quantization. This offers two advantages: first, a large number of documents can be kept in RAM memory at the same time. Second, the sliding window becomes significantly faster since distances between quantized HOG descriptors can be precomputed.  Our results significantly outperform other segmentation-free methods in the literature, both in accuracy and in speed and memory usage.</p>
+
+<h3>People</h3>
+
+<ul>
+<li>Jon Almazán</li>
+<li>Albert Gordo</li>
+<li>Alicia Fornés</li>
+<li>Ernest Valveny</li>
+</ul><h3>BMVC 2012 Paper Citation</h3>
+
+<p>Jon Almazán, Albert Gordo, Alicia Fornés, Ernest Valveny. <strong>Efficient Exemplar Word Spotting</strong>. In BMVC, 2012. | [Bibtex] [PDF]</p>
+
+<h3>Matlab Code</h3>
+
+<p>To get started, you need to install MATLAB and download the code from Github. This code has been tested on Linux and pre-compiled Mex files are included.</p>
+
+<h6>Download Exemplar Word Spotting Library source code (MATLAB and C++) and compile it</h6>
+
+<div class="highlight">
+<pre><span class="nv">$ </span><span class="nb">cd</span> ~/your_projects/
+<span class="nv">$ </span>git clone git://github.com/almazan/ews.git
+<span class="nv">$ </span><span class="nb">cd </span>ews/util
+<span class="nv">$ </span>./compileAll.sh
+</pre>
+</div>
+
+
+<h6>Download and uncompress datasets</h6>
+
+<div class="highlight">
+<pre><span class="nv">$ </span><span class="nb">cd </span>ews/datasets
+<span class="nv">$ </span>wget http://www.cvc.uab.es/~almazan/data/Datasets.tar.gz
+<span class="nv">$ </span>tar -xzf Datasets.tar.gz
+</pre>
+</div>
+
+
+<h6>Script for parameters validation</h6>
+
+<div class="highlight">
+<pre>&gt;&gt; matlab
+<span class="nv">$ </span>validation_script
+</pre>
+</div>
+
+
+<h6>Run Exemplar Word Spotting</h6>
+
+<div class="highlight">
+<pre>&gt;&gt; matlab
+<span class="nv">$ </span>main_eews
+</pre>
+</div>
+
+
+<p><strong>Note</strong>: In order to modify the parameters or select a dataset, you should edit manually the get_initparams.m file.</p>
+
+<h3>Funding</h3>
+
+<p>This work has been partially supported by the Spanish projects TIN2011-24631, TIN2009-14633-C03-03 and CSD2007-00018, by the EU project ERC-2010-AdG-20100407-269796 and by two research grants of the UAB (471-01-8/09).</p>
+
+<h3>Support or Contact</h3>
+
+<p>For any comment or suggestion, please contact with <a href="http://www.cvc.uab.es/%7Ealmazan/">Jon Almazán</a>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Exemplar Word Spotting maintained by <a href="https://github.com/almazan">almazan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
