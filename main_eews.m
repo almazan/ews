@@ -10,7 +10,6 @@ addpath('./util');
 addpath('./util/jsgd-55/matlab');
 addpath('./util/features_esvm');
 addpath('./util/yael_matlab_linux64_v277');
-addpath('./util/liblinear-1.8/matlab');
 
 params = get_initparams();
 

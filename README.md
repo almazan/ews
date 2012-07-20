@@ -5,7 +5,7 @@ Welcome to the Exemplar Word Spotting library, a software for the localization o
 
 This code is the basis of the following project:
 
-## [Jon Almazán](http://www.cvc.uab.es/~almazan), Albert Gordo, Alicia Fornés, Ernest Valveny. **Efficient Exemplar Word Spotting** In BMVC, 2012. | [Project Page](http://almazan.github.com/ews/) 
+###### [Jon Almazán](http://www.cvc.uab.es/~almazan), [Albert Gordo](http://dag.cvc.uab.es/content/albert-gordo), [Alicia Fornés](http://dag.cvc.uab.es/content/alicia-forn%C3%A9s), [Ernest Valveny](http://www.cvc.uab.es/personal2.asp?id=73). **Efficient Exemplar Word Spotting**. In BMVC, 2012. | [Project Page](http://almazan.github.com/ews/) 
 
 
 Abstract
