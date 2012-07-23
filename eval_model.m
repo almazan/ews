@@ -1,4 +1,5 @@
 function [scores, results, locW] = eval_model(params, model, docs, relevantBoxes, PQ_centroids)
+%% Given a query model and a set of docs, this functions finds the most similar patches to the query
 
 numDocs = params.numDocs;
 
@@ -7,6 +8,7 @@ scoresWindows = cell(numDocs,1);
 resultsWindows = cell(numDocs,1);
 
 for i = 1:numDocs
+    % Compute windows scores
     [scsW, locW] = get_windows(params, docs(i), model, PQ_centroids);
     
     
@@ -42,9 +44,6 @@ for i = 1:numDocs
     resultsWindows{i} = res;
     scoresWindows{i} = scsW;
     locWindows{i} = locW;
-    
-    % sacar interseccion (cuidado formato [x y w h])!!!
-    % sacar union
 end
 
 %% Sort all the scores

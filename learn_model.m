@@ -1,4 +1,6 @@
 function model = learn_model(params, query, docs, PCA, PQ_centroids)
+% Learns the query model
+
 rand('seed',0);rand('state',0);
 
 model = struct;
