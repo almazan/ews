@@ -1,4 +1,5 @@
 function [queries, classes] = get_queries(params)
+% Loads pre-defined queries and defines the classes
 
 disp('* Loading queries *');
 
@@ -33,7 +34,6 @@ if ~exist(fileName, 'file')
         end
         queries(i).class = class;
     end
-    %     classes.indexToName = classesNames;
     save(fileName, 'queries', 'classes');
 else
     load(fileName);

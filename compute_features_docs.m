@@ -1,4 +1,6 @@
 function [docs, PCA, PQ_centroids] = compute_features_docs(params, docs)
+%% Computes the features of the input docs
+
 
 if ~exist(params.fileFeatures, 'file')
     docs = get_images_docs(params, docs);
@@ -11,39 +13,6 @@ if ~exist(params.fileFeatures, 'file')
         
         docs(d).bH = bH;
         docs(d).bW = bW;
-        
-        %% Compute labels at HOG level
-        labelsW = zeros(bH,bW);
-        labelsC = zeros(bH,bW);
-        sbin = params.sbin;
-        abin = sbin*sbin;
-        words = docs(d).words;
-        yIni = docs(d).yIni;
-        xIni = docs(d).xIni;
-        
-        WordsPos = zeros(length(words), 4);
-        for w=1:length(words)
-            WordsPos(w,:)=[words(w).loc(1) words(w).loc(3) words(w).W words(w).H];
-        end
-        
-%         iia = yIni+sbin*(1:bH);
-%         jja = xIni+sbin*(1:bW);
-%         iib = (1:bH);
-%         jjb = (1:bW);
-%         [iiia,jjja]=meshgrid(iia,jja);
-%         [iiib,jjjb]=meshgrid(iib,jjb);
-%         WindowsPos=[jjja(:),iiia(:), repmat(sbin, bH*bW,1), repmat(sbin, bH*bW,1), jjjb(:),iiib(:)];
-%         intArea = rectint(WindowsPos(:,1:4), WordsPos);
-%         [pv,pw] = find((intArea/abin) > 0.75);
-%         ijw = [WindowsPos(pv, 6) WindowsPos(pv, 5) pw];
-%         for ind=1:length(ijw)
-%             trip = ijw(ind,:);
-%             labelsW(trip(1),trip(2)) = int32(words(trip(3)).globalIdx);
-%             labelsC(trip(1),trip(2)) = int32(words(trip(3)).class);
-%         end
-%         
-%         docs(d).labelsHOGW = labelsW;
-%         docs(d).labelsHOGC = labelsC;
     end
     
     %% Learn PCA

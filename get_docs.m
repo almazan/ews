@@ -1,4 +1,6 @@
 function [docs, relevantBoxesByClass, numRelevantWordsByClass] = get_docs(params, classes)
+% Loads the test document images and extracts the relevant words of these documents
+% Defines the classes
 
 disp('* Loading documents *');
 

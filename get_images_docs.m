@@ -1,4 +1,6 @@
 function docs = get_images_docs(params, docs)
+% Loads the document images and resizes them in order to adjust them to the
+% HOG's cell size
 
 disp('* Getting images and resizing *');
 for i=1:length(docs)

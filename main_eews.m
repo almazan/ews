@@ -12,6 +12,8 @@ addpath('./util/features_esvm');
 addpath('./util/yael_matlab_linux64_v277');
 
 params = get_initparams();
+% Alternatively, you can use the following function to validate the parameters:
+% params = validation_script();
 
 %% Get queries
 [queries, classes] = get_queries(params);
@@ -21,19 +23,15 @@ params = get_initparams();
 params.numDocs = length(docs);
 params.numNWords = ceil((params.numNWords/params.numDocs))*params.numDocs;
 
-%% Get relevant BB for each query
-
 
 %% Compute features of the test documents
 [docs, PCA, PQ_centroids] = compute_features_docs(params, docs);
 
-
 mAP = zeros(length(queries),1);
 scores = cell(length(queries),1);
 resultLabels = cell(length(queries),1);
-wordsIdx = cell(length(queries),1);
 locWords = cell(length(queries),1);
-classesWords = cell(length(queries),1);
+
 %% Learn model and evaluate each query
 % Load models
 if exist(params.fileModels, 'file')
@@ -45,16 +43,13 @@ parfor i = 1:length(queries)
     q = queries(i);
     class = q.class;
     nrelW = numRelevantWordsByClass(class);
-    %fprintf('*** Evaluating word %s (%d) ***\n', q.gttext, i);
     
     %% Learn model
     if isempty(models{i})
-        %fprintf('Computing model\n');
         models{i} = learn_model(params, q, docs, PCA, PQ_centroids);
     end
     
     %% Retrieve regions of the query
-    %fprintf('Retrieving regions\n');
     [scores{i}, resultLabels{i}, locWords{i}] = eval_model(params, models{i}, docs, relevantBoxesByClass(q.class,:), PQ_centroids);
     
     if params.showResults
@@ -69,6 +64,6 @@ if ~exist(params.fileModels, 'file')
     save(params.fileModels, 'models');
 end
 
-save(params.fileResults, 'mAP', 'scores', 'resultLabels', 'wordsIdx', 'locWords', 'classesWords');
+save(params.fileResults, 'mAP', 'scores', 'resultLabels', 'locWords');
 
 fprintf('\n*** Final mAP: %f ***\n',mean(mAP));
