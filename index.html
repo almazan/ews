@@ -31,9 +31,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Abstract</h3>
+        <h3>Introduction</h3>
 
-<p>We implement an unsupervised segmentation-free method for word spotting in document images. Documents are represented with a grid of HOG descriptors, and a sliding window approach is used to locate the document regions that are most similar to the query. We use the exemplar SVM framework to produce a better representation of the query in an unsupervised way. Finally, the document descriptors are precomputed and compressed with Product Quantization. This offers two advantages: first, a large number of documents can be kept in RAM memory at the same time. Second, the sliding window becomes significantly faster since distances between quantized HOG descriptors can be precomputed.  Our results significantly outperform other segmentation-free methods in the literature, both in accuracy and in speed and memory usage.</p>
+<p>This library implements an unsupervised segmentation-free method for word spotting in document images. Documents are represented with a grid of HOG descriptors, and a sliding window approach is used to locate the document regions that are most similar to the query. We use the exemplar SVM framework to produce a better representation of the query in an unsupervised way. Finally, the document descriptors are precomputed and compressed with Product Quantization. This offers two advantages: first, a large number of documents can be kept in RAM memory at the same time. Second, the sliding window becomes significantly faster since distances between quantized HOG descriptors can be precomputed.</p>
 
 <h3>People</h3>
 
@@ -74,8 +74,8 @@
 <h6>Script for parameters validation</h6>
 
 <div class="highlight">
-<pre>&gt;&gt; matlab
-<span class="nv">$ </span>validation_script
+<pre>$ matlab
+<span class="nv">&gt;&gt; </span>validation_script
 </pre>
 </div>
 
@@ -83,8 +83,8 @@
 <h6>Run Exemplar Word Spotting</h6>
 
 <div class="highlight">
-<pre>&gt;&gt; matlab
-<span class="nv">$ </span>main_eews
+<pre>$ matlab
+<span class="nv">&gt;&gt; </span>main_eews
 </pre>
 </div>
 
