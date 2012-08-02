@@ -10,6 +10,8 @@ addpath('./util');
 addpath('./util/jsgd-55/matlab');
 addpath('./util/features_esvm');
 addpath('./util/yael_matlab_mac64_v277');
+%addpath('./util/yael_matlab_linux64_v277');
+addpath('./util/codi_DTW_Rath_i_BSM');
 
 params = get_initparams();
 % Alternatively, you can use the following function to validate the parameters:
@@ -39,7 +41,7 @@ if exist(params.fileModels, 'file')
 else
     models = cell(length(queries),1);
 end
-parfor i = 1:length(queries)
+for i = 1:length(queries)
     q = queries(i);
     class = q.class;
     nrelW = numRelevantWordsByClass(class);

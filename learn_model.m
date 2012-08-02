@@ -72,6 +72,8 @@ for id = 1:length(docs)
     numBins = model.bH*model.bW;
     IND = int32(zeros(1,wordsByDoc*numBins));
     for jj=1:wordsByDoc
+        % Pick a random scale
+        sc = 1+round(length(params.scales)*rand);
         % Pick a random starting cell
         by = 1+round((BH-model.bH-1)*rand);
         bx = 1+round((BW-model.bW-1)*rand);
