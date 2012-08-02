@@ -9,7 +9,7 @@
 addpath('./util');
 addpath('./util/jsgd-55/matlab');
 addpath('./util/features_esvm');
-addpath('./util/yael_matlab_linux64_v277');
+addpath('./util/yael_matlab_mac64_v277');
 
 params = get_initparams();
 % Alternatively, you can use the following function to validate the parameters:
