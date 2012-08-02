@@ -59,7 +59,7 @@ for i = 1:MAXLEVELS
   end
   
   scale(i) = scaler;
-  scaled = resize(im,scale(i));
+  scaled = resize(repmat(im,[1 1 3]),scale(i));
   
   %if minimum dimensions is less than or equal to 5, exit
   if min([size(scaled,1) size(scaled,2)])<=MINDIMENSION
@@ -67,7 +67,7 @@ for i = 1:MAXLEVELS
     return;
   end
 
-  feat{i} = params.init_params.features(scaled,sbin);
+  [bH,bW,tr1,feat{i}] = esvm_features(scaled,sbin,params.descrType);
 
   %if we get zero size feature, backtrack one, and dont produce any
   %more levels

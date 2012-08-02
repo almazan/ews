@@ -8,6 +8,12 @@ params.numResultImages = 50;
 params.descrType = 'hog_esvm';
 params.sbin = 12;
 params.obin = 9;
+params.levels_per_scale = 1;
+params.min_scale = 0.9;
+params.max_scale = 1.1;
+params.orig_scale_index = params.levels_per_scale + 1;
+params.scales = unique([params.min_scale:(1-params.min_scale)/params.levels_per_scale:1 ...
+    1:(params.max_scale-1)/params.levels_per_scale:params.max_scale]);
 
 % Training parameters
 params.rangeX = -10:2:10;
