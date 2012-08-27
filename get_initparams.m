@@ -14,6 +14,7 @@ params.max_scale = 1.1;
 params.orig_scale_index = params.levels_per_scale + 1;
 params.scales = unique([params.min_scale:(1-params.min_scale)/params.levels_per_scale:1 ...
     1:(params.max_scale-1)/params.levels_per_scale:params.max_scale]);
+params.numscales = length(params.scales);
 
 % Training parameters
 params.rangeX = -10:2:10;
@@ -38,7 +39,7 @@ params.epochs = 10;
 params.bias = 1;
 
 % Test parameters
-params.thrWindows = 2000;
+params.thrWindows = 10000;
 params.step = 1;
 params.overlap = 0.5;
 params.overlapnms = 0.2;

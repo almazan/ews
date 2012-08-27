@@ -1,5 +1,5 @@
 % Function main_eews
-% Jon Almazán and Albert Gordo
+% Jon Almazan and Albert Gordo
 % 06/07/2012
 % Main program to execute the complete Exemplar Word Spotting framework
 
@@ -9,8 +9,14 @@
 addpath('./util');
 addpath('./util/jsgd-55/matlab');
 addpath('./util/features_esvm');
-addpath('./util/yael_matlab_mac64_v277');
-%addpath('./util/yael_matlab_linux64_v277');
+if strcmpi(computer,'maci64')
+    addpath('./util/yael_matlab_mac64_v277');
+elseif strcmpi(computer,'glnxa64')
+    addpath('./util/yael_matlab_linux64_v277');
+else
+    disp('Operating system not supported');
+    return
+end
 addpath('./util/codi_DTW_Rath_i_BSM');
 
 params = get_initparams();
@@ -55,7 +61,7 @@ for i = 1:length(queries)
     [scores{i}, resultLabels{i}, locWords{i}] = eval_model(params, models{i}, docs, relevantBoxesByClass(q.class,:), PQ_centroids);
     
     if params.showResults
-       save_result_images(q, i, locWords{i}, resultLabels{i}, docs, params);
+        save_result_images(q, i, locWords{i}, resultLabels{i}, docs, params);
     end
     
     %% Compute mAP
