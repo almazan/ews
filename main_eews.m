@@ -47,7 +47,7 @@ if exist(params.fileModels, 'file')
 else
     models = cell(length(queries),1);
 end
-for i = 1:length(queries)
+parfor i = 1:length(queries)
     q = queries(i);
     class = q.class;
     nrelW = numRelevantWordsByClass(class);

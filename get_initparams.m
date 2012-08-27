@@ -1,7 +1,7 @@
 function params = get_initparams()
 
 params.dataset = 'GW';
-params.showResults = 1;
+params.showResults = 0;
 params.numResultImages = 50;
 
 % HOG parameters
@@ -11,10 +11,11 @@ params.obin = 9;
 params.levels_per_scale = 1;
 params.min_scale = 0.9;
 params.max_scale = 1.1;
-params.orig_scale_index = params.levels_per_scale + 1;
 params.scales = unique([params.min_scale:(1-params.min_scale)/params.levels_per_scale:1 ...
     1:(params.max_scale-1)/params.levels_per_scale:params.max_scale]);
+% params.scales = 1;
 params.numscales = length(params.scales);
+params.orig_scale_index = ceil(params.numscales/2);
 
 % Training parameters
 params.rangeX = -10:2:10;
