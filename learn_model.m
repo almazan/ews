@@ -50,6 +50,11 @@ for dx=params.rangeX
         % Flattened by rows.
         [tr1,tr2,tr3,desc] = esvm_features(im,params.sbin,params.descrType);
         
+        if dx==0 && dy==0
+            im2 = repmat(im(:,:,1),[1 1 3]);
+            descHOG = features_pedro(double(im2),params.sbin);
+        end
+        
         % Apply PCA
         if params.PCADIM > 0
             % Center
@@ -65,16 +70,21 @@ end
 wordsByDoc = params.numNWords/params.numDocs;
 startPos = params.numTrWords;
 for id = 1:length(docs)
-    scale = ceil(params.numscales/2);
-    fD = docs(id).features{scale};
-    BH = docs(id).bH(scale);
-    BW = docs(id).bW(scale);
+    %     scale = ceil(params.numscales/2);
+    %     fD = docs(id).features{scale};
+    %     BH = docs(id).bH(scale);
+    %     BW = docs(id).bW(scale);
     
     numBins = model.bH*model.bW;
-    IND = int32(zeros(1,wordsByDoc*numBins));
+    %     IND = int32(zeros(1,wordsByDoc*numBins));
+    IND = cell(params.numscales,1);
     for jj=1:wordsByDoc
         % Pick a random scale
-        % sc = 1+round(length(params.scales)*rand);
+        sc = max(round(params.numscales*rand),1);
+        
+        BH = docs(id).bH(sc);
+        BW = docs(id).bW(sc);
+        
         % Pick a random starting cell
         by = 1+round((BH-model.bH-1)*rand);
         bx = 1+round((BW-model.bW-1)*rand);
@@ -82,15 +92,29 @@ for id = 1:length(docs)
         kk = 0;
         for tmpby=by:by+model.bH-1
             sp = (tmpby-1)*BW+bx;
-            IND((jj-1)*numBins+kk*model.bW+1:(jj-1)*numBins+(kk+1)*model.bW) = sp:sp+model.bW-1;
+            %             IND((jj-1)*numBins+kk*model.bW+1:(jj-1)*numBins+(kk+1)*model.bW) = sp:sp+model.bW-1;
+            IND{sc} = [IND{sc} sp:sp+model.bW-1];
             kk = kk+1;
         end
     end
     if params.DoPQ
-        rec=PQ_centroids(:,fD(IND));
+%                 rec=PQ_centroids(:,fD(IND));
+        %%%%
+        rec = [];
+        for i=1:params.numscales
+            rec = [rec PQ_centroids(:,docs(id).features{i}(IND{i}))];
+        end
+        %%%%
         descs = reshape(rec, descsz, wordsByDoc);
     else
-        descs = reshape(fD(:,IND), descsz, wordsByDoc);
+        %%%%
+        rec = [];
+        for i=1:params.numscales
+            rec = [rec; docs(id).features{i}(:,IND{i})];
+        end
+        %%%%
+        %         descs = reshape(fD(:,IND), descsz, wordsByDoc);
+        
     end
     trHOGs(:,startPos + (id-1)*wordsByDoc+1: startPos + (id)*wordsByDoc) = descs;
 end
