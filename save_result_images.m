@@ -20,9 +20,12 @@ for i = 1:numIm
     file = sprintf('%.3d%s.png', i, flag);
     
     bb = locWords(i,:);
-    bb(3:4) = bb(3:4)-docs(bb(5)).yIni;
-    bb(1:2) = bb(1:2)-docs(bb(5)).xIni;
-    im = docs(bb(5)).image(bb(3):bb(4),bb(1):bb(2));
+    bb(3:4) = bb(3:4)-docs(bb(5)).yIni+1;
+    bb(1:2) = bb(1:2)-docs(bb(5)).xIni+1;
+    [H,W] = size(docs(bb(5)).image);
+    y1 = max(bb(3),1); x1 = max(bb(1),1);
+    y2 = min(bb(4),H); x2 = min(bb(2),W);
+    im = docs(bb(5)).image(y1:y2,x1:x2);
     imwrite(im, [path file], 'png');
 end
 
