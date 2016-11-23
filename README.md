@@ -42,11 +42,9 @@ $ ./compileAll.sh
 ```
 
 ## Download and uncompress datasets
-``` sh
-$ cd ews/datasets
-$ wget http://www.cvc.uab.es/~almazan/data/Datasets.tar.gz
-$ tar -xzf Datasets.tar.gz
-```
+
+Download the GW dataset from [here] (https://www.dropbox.com/s/ewz5c2gmxwjyokm/GW.zip?dl=0) and unzip its content in ews/datasets.
+
 
 ## Script for parameters validation
 
