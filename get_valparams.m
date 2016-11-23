@@ -1,6 +1,6 @@
 function params = get_valparams()
 
-params.dataset = 'LB';
+params.dataset = 'GW';
 
 % HOG parameters
 params.descrType = 'hog_esvm';
